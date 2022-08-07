@@ -15,17 +15,30 @@
     <div class="page-wrapper">
         <div class="post-list">
             <h1>Articles</h1>
-            <?php foreach ($posts as $post) : ?>
+            <?php foreach ($pageData['posts'] as $post) : ?>
                 <article>
                     <h3><?php echo $post['title']; ?></h3>
                 </article>
             <?php endforeach; ?>
         </div>
         <div class="pagination-links">
-            <a href="#" class="btn disabled">
-                <ion-icon name="arrow-back-outline"></ion-icon> Prev Page
-            </a>
-            <a href="#" class="btn">Next Page <ion-icon name="arrow-forward-outline"></ion-icon></a>
+            <?php if ($pageData['prevPage']) : ?>
+                <a href="index.php?page=<?php echo $pageData['prevPage']; ?>" class="btn">
+                    <ion-icon name="arrow-back-outline"></ion-icon> Prev Page
+                </a>
+            <?php else : ?>
+                <span></span>
+            <?php endif; ?>
+
+            <?php if ($pageData['nextPage']) : ?>
+                <a href="index.php?page=<?php echo $pageData['nextPage']; ?>" class="btn">Next Page <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </a>
+            <?php else : ?>
+                <span></span>
+            <?php endif; ?>
+
+
+
         </div>
     </div>
 
